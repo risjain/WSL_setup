@@ -1,0 +1,6 @@
+* Setting up Git access
+** SSH-key
+It is ideal to generate an ssh-key for the environment you're working from. This helps with all the installations specific to github.com or github.nrel.gov or any other server specific github.
+*** WSL (each installation of it) and Windows will have their individual SSH-keys.  
+*** The public key is unique to the installation (and not the service you're talking to - different githubs for example). Therefore, the same key can be shared with multiple services to authenticate the access without entering the username/password everytime.
+* 

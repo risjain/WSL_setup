@@ -1,3 +1,4 @@
+#!/bin/bash
 ##############################################################
 # Setting up the Environment for Building packages/Installing Zsh
 ##############################################################
@@ -8,6 +9,9 @@ sudo apt-get upgrade -y
 sudo apt-get install curl -y
 sudo apt-get install zsh -y
 sudo apt-get install git-core -y
+
+# Enables tab completion with oh-my-zsh plugins
+echo "ZSH_DISABLE_COMPFIX='true'" >> ~/.zshrc
 
 # Getting and installing Oh-my-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -26,9 +30,6 @@ echo "DEFAULT_USER=`whoami`" >> ~/.zshrc
 git clone https://github.com/seebi/dircolors-solarized ~/.dircolors
 # Enable the new directory color format
 echo "eval `dircolors ~/.dircolors/dircolors.256dark`" >> ~/.zshrc
-
-# Enables tab completion with oh-my-zsh plugins
-echo "ZSH_DISABLE_COMPFIX='true'" >> ~/.zshrc
 
 # Enables external display via VcXrvc
 echo "export DISPLAY=:0" >> ~/.zshrc

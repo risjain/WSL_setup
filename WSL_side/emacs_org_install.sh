@@ -37,11 +37,10 @@ fi
 cd $WHERE_IS_EMACS/emacs
 
 git pull
-read INSTALL.REPO
 ./autogen.sh
 ./configure
-sudo make
-sudo make install
+make
+make install
 
 ##############################################################
 # Get latest version of org-mode in ~/git/orgmode.org/org-mode
@@ -49,6 +48,8 @@ sudo make install
 
 # Pulling for first time/Updating the Org-mode repo
 export GIT_SSL_NO_VERIFY=1
+cd $WHERE_IS_EMACS
+
 if [ ! -d $WHERE_IS_EMACS/org-mode ]; then
 	git clone https://code.orgmode.org/bzg/org-mode.git
 else
@@ -59,17 +60,20 @@ fi
 
 # build the autoloads
 cd $WHERE_IS_EMACS/org-mode
-sudo make
-sudo make autoloads
+make
+make autoloads
 
 ##############################################################
 # Set the environment variable EMACS_CFG_DIR for linux to use
 ##############################################################
 echo export EMACS_CFG_DIR=${WHERE_IS_EMACS}/emacs_settings >> ~/.bashrc 
 echo export EMACS_CFG_DIR=${WHERE_IS_EMACS}/emacs_settings >> ~/.zshrc
+echo export EMACS_SRC_DIR=${WHERE_IS_EMACS} >> ~/.bashrc 
+echo export EMACS_SRC_DIR=${WHERE_IS_EMACS} >> ~/.zshrc
 
 ##############################################################
-# Clone and configure EMACS settings
+# Clone and configure EMACS settings (for Linux)
 ##############################################################
+cd $WHERE_IS_EMACS
 git clone -b linux git@github.com:risjain/emacs_settings.git
-cp -i $EMACS_CFG_DIR/.emacs ~
+yes | cp -i $WHERE_IS_EMACS/emacs_settings/.emacs ~

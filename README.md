@@ -1,12 +1,5 @@
 # WSL Setup
-
-## Clone the directory to the desired folder
-```
-git clone git@github.com:risjain/WSL_setup.git
-WSL_setup=${PWD}
-```
-
-## From the folder where "Emacs, Org, and others" will be installed, execute the following:
+## Generate an SSH key for your machine to access Github:
 ```
 ssh-keygen -t rsa -b 4096 -C "rj@rishabh.jain"
 ```
@@ -14,6 +7,14 @@ ssh-keygen -t rsa -b 4096 -C "rj@rishabh.jain"
 ## Add the ssh key generated to the Github
 ```
 cat ~/.ssh/id_rsa.pub
+```
+
+
+## Clone the directory to the desired folder
+```
+git clone git@github.com:risjain/WSL_setup.git
+cd WSL_setup
+WSL_setup=${PWD}
 ```
 
 ## Run the following commands one-by-one
